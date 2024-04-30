@@ -15,13 +15,14 @@
     <div class="container-sm">
       <% if (created) { %>
       <div class="alert alert-success">Note has been added!</div>
+      <p><%= created %></p>
       <% } %>
       <h1><%= title %></h1>
       <form action="/" method="post" class="mb-2">
         <div class="form-group mb-2">
           <input type="text" class="form-control sm" name="title" />
         </div>
-        <button class="btn btn-primary">Cteate</button>
+        <button type="button" class="btn btn-primary">Cteate</button>
       </form>
       <% if (notes.length) { %>
       <div class="card">
@@ -31,13 +32,24 @@
             class="list-group-item d-flex justify-content-between align-items-center"
           >
             <%= notes[i].title %>
-            <button
-              class="btn btn-danger"
-              data-type="remove"
-              data-id="<%= notes[i].id %>"
-            >
-              &times;
-            </button>
+            <div class="">
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-type="edit"
+                data-id="<%= notes[i].id %>"
+              >
+                Edit
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                data-type="remove"
+                data-id="<%= notes[i].id %>"
+              >
+                &times;
+              </button>
+            </div>
           </li>
           <% } %>
         </ul>
